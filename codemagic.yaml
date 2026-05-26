@@ -5,6 +5,8 @@ workflows:
     environment:
       flutter: stable
     scripts:
+      - name: Clean Project
+        script: flutter clean  # हा महत्त्वाचा बदल आहे
       - name: Get Flutter packages
         script: flutter pub get
       - name: Build APK
@@ -23,3 +25,4 @@ workflows:
         notify:
           success: true
           failure: true
+          
