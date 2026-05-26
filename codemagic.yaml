@@ -1,0 +1,24 @@
+workflows:
+  android-release:
+    name: Code Magic - Android Release
+    max_build_duration: 60
+    environment:
+      flutter: 3.24.0
+      java: 17
+    scripts:
+      - name: Get Flutter packages
+        script: flutter pub get
+      - name: Build APK (Release - Signed)
+        script: |
+          flutter build apk --release \
+            --build-name=1.0.0 \
+            --build-number=1
+    artifacts:
+      - build/app/outputs/flutter-apk/app-release.apk
+    publishing:
+      email:
+        recipients:
+          - your-email@example.com
+        notify:
+          success: true
+          failure: true
